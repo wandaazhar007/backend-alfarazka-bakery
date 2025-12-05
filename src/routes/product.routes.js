@@ -7,22 +7,17 @@ import {
   updateProduct,
   deleteProduct,
 } from "../controllers/productController.js";
+import { authAdmin } from "../middlewares/authAdmin.js";
 
 const router = Router();
 
-// GET /api/products -> list (support ?search=&categoryId=)
+// Public (frontend pelanggan)
 router.get("/", getProducts);
-
-// GET /api/products/:id -> detail
 router.get("/:id", getProductById);
 
-// POST /api/products -> create
-router.post("/", createProduct);
-
-// PUT /api/products/:id -> update
-router.put("/:id", updateProduct);
-
-// DELETE /api/products/:id -> soft delete
-router.delete("/:id", deleteProduct);
+// Admin only
+router.post("/", authAdmin, createProduct);
+router.put("/:id", authAdmin, updateProduct);
+router.delete("/:id", authAdmin, deleteProduct);
 
 export default router;

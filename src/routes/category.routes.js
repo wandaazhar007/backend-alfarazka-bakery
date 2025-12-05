@@ -7,22 +7,17 @@ import {
   updateCategory,
   deleteCategory,
 } from "../controllers/categoryController.js";
+import { authAdmin } from "../middlewares/authAdmin.js";
 
 const router = Router();
 
-// GET /api/categories -> list (support ?search=)
+// Public (kalau mau dipakai buat filter di website pelanggan)
 router.get("/", getCategories);
-
-// GET /api/categories/:id -> detail kategori
 router.get("/:id", getCategoryById);
 
-// POST /api/categories -> buat kategori baru
-router.post("/", createCategory);
-
-// PUT /api/categories/:id -> update kategori
-router.put("/:id", updateCategory);
-
-// DELETE /api/categories/:id -> soft delete kategori
-router.delete("/:id", deleteCategory);
+// Admin only
+router.post("/", authAdmin, createCategory);
+router.put("/:id", authAdmin, updateCategory);
+router.delete("/:id", authAdmin, deleteCategory);
 
 export default router;
