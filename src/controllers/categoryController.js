@@ -1,4 +1,3 @@
-// src/controllers/categoryController.js
 import { categoryService } from "../services/categoryService.js";
 
 export const getCategories = async (req, res, next) => {

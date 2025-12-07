@@ -1,51 +1,3 @@
-// // src/services/adminUserService.js
-// import { db, admin } from "../firebase/firebaseAdmin.js";
-// import bcrypt from "bcrypt";
-// import {
-//   ADMIN_USERS_COLLECTION,
-//   mapAdminUserDoc,
-// } from "../models/adminUserModel.js";
-
-// const collectionName = ADMIN_USERS_COLLECTION;
-
-// export const adminUserService = {
-//   async findByEmail(email) {
-//     if (!db) throw new Error("Firestore is not initialized");
-
-//     const snapshot = await db
-//       .collection(collectionName)
-//       .where("email", "==", email.toLowerCase())
-//       .limit(1)
-//       .get();
-
-//     if (snapshot.empty) return null;
-
-//     return mapAdminUserDoc(snapshot.docs[0]);
-//   },
-
-//   async createAdminUser({ name, email, password, role = "admin" }) {
-//     if (!db) throw new Error("Firestore is not initialized");
-
-//     const now = new Date();
-//     const passwordHash = await bcrypt.hash(password, 10);
-
-//     const docRef = await db.collection(collectionName).add({
-//       name,
-//       email: email.toLowerCase(),
-//       passwordHash,
-//       role,
-//       isActive: true,
-//       createdAt: admin.firestore.Timestamp.fromDate(now),
-//       updatedAt: admin.firestore.Timestamp.fromDate(now),
-//     });
-
-//     const doc = await docRef.get();
-//     return mapAdminUserDoc(doc);
-//   },
-// };
-
-
-// src/services/adminUserService.js
 import { db, admin } from "../firebase/firebaseAdmin.js";
 import bcrypt from "bcrypt";
 import {
@@ -56,9 +8,9 @@ import {
 const collectionName = ADMIN_USERS_COLLECTION;
 
 export const adminUserService = {
-  /**
-   * Dipakai untuk login (auth)
-   */
+
+  //  Used for login (auth)
+  //  Dipakai untuk login (auth)
   async findByEmail(email) {
     if (!db) throw new Error("Firestore is not initialized");
 
@@ -73,9 +25,9 @@ export const adminUserService = {
     return mapAdminUserDoc(snapshot.docs[0]);
   },
 
-  /**
-   * Create admin user (dipakai script awal & nanti endpoint POST /api/admin-users)
-   */
+
+  // Create admin user (used in initial script & later endpoint POST /api/admin-users)
+  //  Create admin user (dipakai script awal & nanti endpoint POST /api/admin-users)
   async createAdminUser({ name, email, password, role = "admin" }) {
     if (!db) throw new Error("Firestore is not initialized");
 
@@ -85,6 +37,7 @@ export const adminUserService = {
 
     const emailLower = email.toLowerCase().trim();
 
+    // Check if email is already registered
     // Cek apakah email sudah terdaftar
     const existingSnapshot = await db
       .collection(collectionName)
@@ -114,9 +67,14 @@ export const adminUserService = {
   },
 
   /**
+  * List all active admin/staff users
+  * For endpoint: GET /api/admin-users
+  */
+  /**
    * List semua admin/staff yang masih aktif
    * Untuk endpoint: GET /api/admin-users
    */
+
   async listAdminUsers() {
     if (!db) {
       console.warn("Firestore is not initialized. Returning empty users list.");
@@ -133,6 +91,10 @@ export const adminUserService = {
 
   /**
    * Get user by id
+   * For endpoint: GET /api/admin-users/:id
+   */
+  /**
+   * Get user by id
    * Untuk endpoint: GET /api/admin-users/:id
    */
   async getAdminUserById(id) {
@@ -144,6 +106,10 @@ export const adminUserService = {
     return mapAdminUserDoc(doc);
   },
 
+  /**
+   * Update name/role/password
+   * For endpoint: PUT /api/admin-users/:id
+   */
   /**
    * Update nama/role/password
    * Untuk endpoint: PUT /api/admin-users/:id
@@ -175,6 +141,11 @@ export const adminUserService = {
     const updatedDoc = await docRef.get();
     return mapAdminUserDoc(updatedDoc);
   },
+
+  /**
+   * Soft delete user (isActive = false)
+   * For endpoint: DELETE /api/admin-users/:id
+   */
 
   /**
    * Soft delete user (isActive = false)

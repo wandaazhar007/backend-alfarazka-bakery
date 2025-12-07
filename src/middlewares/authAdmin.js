@@ -1,4 +1,3 @@
-// src/middlewares/authAdmin.js
 import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET || "dev_secret_change_me";
@@ -25,7 +24,7 @@ export const authAdmin = (req, res, next) => {
       });
     }
 
-    // simpan info user di req untuk dipakai di controller kalau perlu
+    //save user's info in req for use in controller if needed
     req.user = {
       id: payload.sub,
       email: payload.email,

@@ -5,7 +5,7 @@ import { authAdmin } from "../middlewares/authAdmin.js";
 
 const router = express.Router();
 
-// Semua endpoint admin-user wajib login admin
+// All admin-user endpoints require admin login
 router.use(authAdmin);
 
 // GET /api/admin-users

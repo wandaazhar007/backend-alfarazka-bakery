@@ -1,8 +1,7 @@
-// src/scripts/createInitialAdmin.js
 import dotenv from "dotenv";
 dotenv.config();
 
-import "../firebase/firebaseAdmin.js"; // pastikan Firebase init
+import "../firebase/firebaseAdmin.js";
 import { adminUserService } from "../services/adminUserService.js";
 
 const run = async () => {

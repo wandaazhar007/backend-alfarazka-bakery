@@ -5,6 +5,7 @@ import { slugify } from "../utils/slugify.js";
 const collectionName = "categories";
 
 export const categoryService = {
+  //List category + optional search
   // List kategori + optional search
   async listCategories({ search } = {}) {
     if (!db) {
@@ -25,7 +26,7 @@ export const categoryService = {
         updatedAt: data.updatedAt?.toDate?.().toISOString?.() || null,
       };
     });
-
+    //simple search (for live search in admin/website, if needed)
     // search sederhana (untuk live search di admin/website, kalau mau)
     if (search) {
       const s = search.toLowerCase();

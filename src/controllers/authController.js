@@ -1,4 +1,3 @@
-// src/controllers/authController.js
 import { adminUserService } from "../services/adminUserService.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";

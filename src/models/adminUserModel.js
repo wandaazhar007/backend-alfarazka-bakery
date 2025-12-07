@@ -1,5 +1,3 @@
-// src/models/adminUserModel.js
-
 export const ADMIN_USERS_COLLECTION = "adminUsers";
 
 export const mapAdminUserDoc = (doc) => {

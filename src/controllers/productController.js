@@ -1,4 +1,3 @@
-// src/controllers/productController.js
 import { productService } from "../services/productService.js";
 
 export const getProducts = async (req, res, next) => {
@@ -10,7 +9,7 @@ export const getProducts = async (req, res, next) => {
     const pageSize =
       Number(limit) > 0 && Number(limit) <= 100 ? Number(limit) : 12;
 
-    // ambil semua produk yang sudah difilter search + kategori
+    // fetch all products after filtering + searching
     const allProducts = await productService.listProducts({
       search,
       categoryId,

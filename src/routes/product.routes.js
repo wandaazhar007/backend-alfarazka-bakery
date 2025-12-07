@@ -1,4 +1,3 @@
-// src/routes/product.routes.js
 import { Router } from "express";
 import {
   getProducts,
@@ -12,6 +11,7 @@ import { authAdmin } from "../middlewares/authAdmin.js";
 const router = Router();
 
 // Public (frontend pelanggan)
+// Public (for customer website)
 router.get("/", getProducts);
 router.get("/:id", getProductById);
 
