@@ -1,4 +1,3 @@
-// src/controllers/adminUserController.js
 import { adminUserService } from "../services/adminUserService.js";
 
 export const adminUserController = {
@@ -68,7 +67,7 @@ export const adminUserController = {
         },
       });
     } catch (err) {
-      // error duplicate email dari service
+      // error duplicate email from service
       if (err.message && err.message.includes("Email sudah terdaftar")) {
         return res.status(400).json({
           success: false,
