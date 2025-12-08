@@ -5,6 +5,7 @@ import uploadRouter from "./upload.routes.js";
 import categoryRouter from "./category.routes.js";
 import authRouter from "./auth.routes.js";
 import adminUserRouter from "./adminUser.routes.js";
+import snackPackageRouter from "./snackPackage.routes.js"
 
 const router = Router();
 
@@ -13,6 +14,7 @@ router.use("/products", productRouter);
 router.use("/upload", uploadRouter);
 router.use("/categories", categoryRouter);
 router.use("/auth", authRouter);
+router.use("/snack-packages", snackPackageRouter);
 
 // route untuk admin users
 // route for admin users
