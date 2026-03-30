@@ -1,3 +1,4 @@
+//src/middlewares/authAdmin.js
 import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET || "dev_secret_change_me";

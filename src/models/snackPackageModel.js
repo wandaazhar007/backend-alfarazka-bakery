@@ -1,3 +1,4 @@
+//src/models/snackPackageModel.js
 import { admin, db } from "../firebase/firebaseAdmin.js";
 
 export const SNACK_PACKAGES_COLLECTION = "snackPackages";

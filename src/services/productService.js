@@ -1,3 +1,4 @@
+//src/services/productService.js
 import { db, admin } from "../firebase/firebaseAdmin.js";
 import { slugify } from "../utils/slugify.js";
 

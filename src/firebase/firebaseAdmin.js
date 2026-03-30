@@ -1,3 +1,4 @@
+//src/firebase/firebaseAdmin.js
 import admin from "firebase-admin";
 import "dotenv/config";
 
