@@ -27,6 +27,10 @@ app.use((req, res, next) => {
 
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`Alfarazka Bakery API running on http://localhost:${PORT}`);
+// app.listen(PORT, () => {
+//   console.log(`Alfarazka Bakery API running on http://localhost:${PORT}`);
+// });
+
+app.listen(PORT, "127.0.0.1", () => {
+  console.log(`Server Alfarazka Bakery API running on http://127.0.0.1:${PORT}`);
 });
